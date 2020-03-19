@@ -13,15 +13,15 @@ import Inventory from './components/Inventory/Inventory';
 import notFound from './components/notFound/NotFound';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import Login from './components/Login/Login';
+import { AuthContextProvider } from './components/Login/useAuth';
 
 
-export const UserContext = createContext();
 
 function App() {
-  const user = {name: 'ledumia', email: 'email@gmail.com'}
+  const user = { name: 'ledumia', email: 'email@gmail.com' }
   return (
     <div>
-      <UserContext.Provider value={user.name}>
+      <AuthContextProvider>
         <Header></Header>
         <Router>
           <Switch>
@@ -48,7 +48,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-      </UserContext.Provider>
+      </AuthContextProvider>
     </div>
   );
 }

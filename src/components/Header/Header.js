@@ -1,7 +1,7 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import logo from '../../images/logo.png';
 import './Header.css';
-import { UserContext } from '../../App';
+import { useAuth } from '../Login/useAuth';
 
 
 const usePrevious = value => {
@@ -14,7 +14,8 @@ const usePrevious = value => {
 }
 
 const Header = () => {
-    const user = useContext(UserContext);
+    const auth = useAuth();
+    console.log(auth);
     const [count, setCount] = useState(0);
     const previous = usePrevious(count);
     return (
@@ -27,7 +28,7 @@ const Header = () => {
                 <a href="/Shop">Shop</a>
                 <a href="/Review">Order Review</a>
                 <a href="/inventory">Manage Inventory</a>
-                <span style={{ color: 'yellow' }}>{user}</span>
+                <span style={{ color: 'yellow' }}>{}</span>
             </nav>
         </div>
     );
