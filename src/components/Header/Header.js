@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import logo from '../../images/logo.png';
 import './Header.css';
 import { useAuth } from '../Login/useAuth';
+import { Link } from 'react-router-dom';
 
 
 const usePrevious = value => {
     const prev = useRef();
-    useEffect ( () => {
+    useEffect(() => {
         console.log(value);
         prev.current = value;
     }, [value])
@@ -28,7 +29,12 @@ const Header = () => {
                 <a href="/Shop">Shop</a>
                 <a href="/Review">Order Review</a>
                 <a href="/inventory">Manage Inventory</a>
-                <span style={{ color: 'yellow' }}>{}</span>
+                {
+                    auth.user && <span style={{ color: 'yellow' }}>Welcome, {auth.user.name}</span>
+                }
+                {
+                    auth.user ? <a href="/login">Sign Out</a> : <a href="/login">Sing In</a>
+                }
             </nav>
         </div>
     );
