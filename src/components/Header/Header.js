@@ -16,7 +16,6 @@ const usePrevious = value => {
 
 const Header = () => {
     const auth = useAuth();
-    console.log(auth);
     const [count, setCount] = useState(0);
     const previous = usePrevious(count);
     return (
